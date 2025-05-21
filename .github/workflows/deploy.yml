@@ -71,3 +71,6 @@ jobs:
         with:
           bucket: some-deployed-bucket
           dist-folder: ./dist
+      - name: Output website URL
+        run: |
+          echo "Website url: ${{ steps.deploy.outputs.website-url }}

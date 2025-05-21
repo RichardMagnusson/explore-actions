@@ -10,7 +10,10 @@ function run() {
 
     // 2) Upload files
     const uploadCommand = `aws s3 sync ${distFolder} s3://${bucket} --region ${region}`;  
-    exec.exec(uploadCommand);  
+    exec.exec(uploadCommand); 
+
+    const websiteUrl = `http://${bucket}.s3-website-${region}.amazonaws.com/`;
+    core.setOutput('website-url', websiteUrl);
 
     core.notice('Starting deploy-s3-javascript action');
 }
